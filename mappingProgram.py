@@ -5,6 +5,9 @@
 import pygame
 from pygame.locals import *
 
+# Points on the map
+points = [(5299575, 3863423), (5431315, 3702398)]
+
 # Take colors input
 YELLOW = (255, 255, 0)
 BLUE = (0, 0, 255)
@@ -92,6 +95,9 @@ while running:
 	else:
 		screen.blit(topoMap, topoRect)
 		pygame.draw.rect(screen, BLUE, topoRect, 2)
+
+	for point in points:
+		pygame.draw.circle(screen, YELLOW, ((point[0] - topLeft[0]) / (bottomRight[0] - topLeft[0]) * (topoRect.right - topoRect.left) + topoRect.left, (point[1] - topLeft[1]) / (bottomRight[1] - topLeft[1]) * (topoRect.bottom - topoRect.top) + topoRect.bottom), 4)
 
 	# getting the coordinates of the map
 	coords = [roadRect.x, roadRect.y]
